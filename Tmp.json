@@ -1,0 +1,28 @@
+function builderFactory(externalObject, buildFunctionName) {
+
+    var makeMenuItemCallback = function (callbackName) {
+        return function (gisObject) {
+            var gisObjectJson = JSON.stringify(gisObject);
+            externalObject[callbackName](gisObjectJson);
+        }
+    };
+
+    var replaceMenuItemCallbacks = function (items) {
+        items.forEach(function (item) {
+            if (item.callback) {
+                item.callback = makeMenuItemCallback(item.callback);
+            }
+            if (item.children) {
+                replaceMenuItemCallbacks(item.children);
+            }
+        });
+    };
+
+    return function (gisObject) {
+        var gisObjectJson = JSON.stringify(gisObject);
+        var itemsJson = externalObject[buildFunctionName](gisObjectJson);
+        var items = JSON.parse(itemsJson);
+        replaceMenuItemCallbacks(items);
+        return items;
+    };
+}
