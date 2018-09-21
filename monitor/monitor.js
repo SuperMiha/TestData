@@ -33,6 +33,7 @@ class MonitorModule {
                 // ЗДЕСЬ ВАША ЛОГИКА
                 if (typeof cefInteraction !== "undefined") {
                     cefInteraction.navigateCallback(attrObject.value);
+                    
                 }
                 //---------------------------------------------
                 // Скрываем загрузочный спиннер
