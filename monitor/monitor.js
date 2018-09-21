@@ -31,6 +31,9 @@ class MonitorModule {
                 const attrObject = objectData.find(attr => attr.label === "Дисп.наим.");
                 //---------------------------------------------
                 // ЗДЕСЬ ВАША ЛОГИКА
+                if (typeof cefInteraction !== "undefined") {
+                    cefInteraction.navigateCallback(attrObject.value);
+                }
                 //---------------------------------------------
                 // Скрываем загрузочный спиннер
                 CSAPI.v1.showSpinner(false);
