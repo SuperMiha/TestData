@@ -35,7 +35,7 @@ class MonitorModule {
                     cefInteraction.navigateCallback(attrObject.value);
                     
                     //для проверки кэширования
-                    const z = 1;
+                    const z = 2;
                 }
                 //---------------------------------------------
                 // Скрываем загрузочный спиннер
